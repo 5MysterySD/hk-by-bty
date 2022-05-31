@@ -19,6 +19,8 @@ _other_installs
 pip3 install -U pip
 git clone $REPO_URL torrentleech-gdrive
 cd torrentleech-gdrive
-pip3 install -U -r requirements.txt
+requirements.txt .
+pip3 install --no-cache-dir -r requirements.txt
+cp /app/torrentleech-gdrive/* /app/
 _externals
 bash $PYTHON_FILE
