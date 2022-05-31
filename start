@@ -13,16 +13,16 @@ _externals () {
    fi
    }
     
-RUN apt update && apt upgrade -y
-RUN apt install git -y
+apt update && apt upgrade -y
+apt install git -y
 
 _other_installs
 
-RUN pip3 install -U pip
-RUN git clone $REPO_URL mirrorbot/ && cd mirrorbot
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+pip3 install -U pip
+git clone $REPO_URL mirrorbot/ && cd mirrorbot
+cp requirements.txt .
+pip3 install --no-cache-dir -r requirements.txt
 
 _externals
 
-CMD ["bash", "$PYTHON_FILE"]
+bash $PYTHON_FILE
