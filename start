@@ -20,7 +20,7 @@ _other_installs
 
 pip3 install -U pip
 git clone $REPO_URL mirrorbot/ && cd mirrorbot
-cp requirements.txt .
+cp -R requirements.txt .
 pip3 install --no-cache-dir -r requirements.txt
 
 _externals
