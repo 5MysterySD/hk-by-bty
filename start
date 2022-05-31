@@ -13,12 +13,16 @@ _externals () {
    fi
    }
     
-apt update && apt upgrade -y
-apt install git -y
+RUN apt update && apt upgrade -y
+RUN apt install git -y
+
 _other_installs
-pip3 install -U pip
-git clone $REPO_URL torrentleech-gdrive
-cd torrentleech-gdrive
-pip3 install -U -r requirements.txt
+
+RUN pip3 install -U pip
+RUN git clone $REPO_URL mirrorbot/ && cd mirrorbot
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 _externals
-bash $PYTHON_FILE
+
+CMD ["bash", "$PYTHON_FILE"]
